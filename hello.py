@@ -1,10 +1,17 @@
 from flask import Flask, url_for, render_template
+from flask import request
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return 'Index page'
+
+@app.route('/login/', methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+        return 'POSTED'
+    return render_template('login.html')
 
 @app.route('/hello/')
 @app.route('/hello/<name>/')
