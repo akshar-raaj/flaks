@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, render_template
 
 app = Flask(__name__)
 
@@ -7,8 +7,9 @@ def index():
     return 'Index page'
 
 @app.route('/hello/')
-def hello_world():
-    return 'Hello World!'
+@app.route('/hello/<name>/')
+def hello(name=None):
+    return render_template('hello.html', name=name)
 
 @app.route('/user/<username>')
 def show_user_profile(username):
