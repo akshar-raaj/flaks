@@ -1,11 +1,12 @@
-from flask import Flask, url_for, render_template
+from flask import Flask
+from flask import redirect, url_for, render_template
 from flask import request
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Index page'
+    return redirect(url_for('login'))
 
 @app.route('/login/', methods=["GET", "POST"])
 def login():
